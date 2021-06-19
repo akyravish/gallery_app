@@ -1,24 +1,17 @@
 import React from 'react';
-import axios from 'axios';
+import unsplash from '../api/unsplash';
 import SearchField from './SearchField';
 
 class App extends React.Component {
-	async onSubmitSearch(value) {
-		const response = await axios.get(
-			'https://api.unsplash.com/search/photos',
-			{
-				params: {
-					query: value,
-				},
-				headers: {
-					Authorization:
-						'Client-ID z2u2axZQfvlfXrrLnLKfTA5eFSAdLvwts2ggAHPU_pg',
-				},
-			}
-		);
+	state = { imageArr: [] };
+	onSubmitSearch = async (value) => {
+		const response = await unsplash.get('/search/photos', {
+			params: { query: value },
+		});
 
-		console.log(response.data.results);
-	}
+		this.setState({ imageArr: response.data.results });
+		console.log(this.state.imageArr.length);
+	};
 
 	render() {
 		return <SearchField onSubmit={this.onSubmitSearch} />;
