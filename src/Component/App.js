@@ -1,5 +1,6 @@
 import React from 'react';
 import unsplash from '../api/unsplash';
+import ImageList from './ImageList';
 import SearchField from './SearchField';
 
 class App extends React.Component {
@@ -10,11 +11,15 @@ class App extends React.Component {
 		});
 
 		this.setState({ imageArr: response.data.results });
-		console.log(this.state.imageArr.length);
 	};
 
 	render() {
-		return <SearchField onSubmit={this.onSubmitSearch} />;
+		return (
+			<div className='ui container'>
+				<SearchField onSubmit={this.onSubmitSearch} />
+				<ImageList images={this.state.imageArr} />
+			</div>
+		);
 	}
 }
 
