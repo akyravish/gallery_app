@@ -1,0 +1,11 @@
+.card {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	height: 1000px;
+	align-content: center;
+}
+
+.card img {
+	margin: 5px;
+}

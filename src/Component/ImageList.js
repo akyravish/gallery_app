@@ -1,15 +1,17 @@
 import React from 'react';
+import './ImageList.css';
 
 const ImageList = (props) => {
-	console.log(props.images);
-	const image = props.images.map((x) => (
-		<img src={x.urls.regular} key={x.id} alt={x.alt_description} />
+	console.log(window.innerHeight);
+	const image = props.images.map(({ urls, id, alt_description }) => (
+		<img
+			className='ui medium rounded image'
+			src={urls.regular}
+			key={id}
+			alt={alt_description}
+		/>
 	));
-	return (
-		<div className='ui centered card'>
-			<div className='image'>{image}</div>
-		</div>
-	);
+	return <div className='card'>{image}</div>;
 };
 
 export default ImageList;
