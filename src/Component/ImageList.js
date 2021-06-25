@@ -1,15 +1,10 @@
 import React from 'react';
 import './ImageList.css';
+import ImageCard from './ImageCard';
 
 const ImageList = (props) => {
-	console.log(window.innerHeight);
-	const image = props.images.map(({ urls, id, alt_description }) => (
-		<img
-			className='ui medium rounded image'
-			src={urls.regular}
-			key={id}
-			alt={alt_description}
-		/>
+	const image = props.images.map((image) => (
+		<ImageCard key={image.id} image={image} />
 	));
 	return <div className='card'>{image}</div>;
 };
